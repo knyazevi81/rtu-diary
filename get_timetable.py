@@ -4,6 +4,7 @@
 # и внесения в базу данных
 
 from requests import get
+import sqlite3
 import datetime
 from tokens import groupapi
 from tokens import currentweekapi
@@ -12,17 +13,18 @@ read = get(groupapi)
 last_week = get(currentweekapi)
 data: dict = read.json()
 now_week: int = last_week.json()['week']
+con = sqlite3.connect('')
 
 
-def calculate_day_by_week(now_day: int, now_week: int) -> datetime.time:
+def calculate_day_by_week(now_day: int, now_week: int) -> datetime:
     """Функция определения даты."""
-    start_date = datetime.date(2023, 2, 6)
-    delta = datetime.timedelta(days=7 * (now_week - 1) + now_day - 1)
+    start_date: datetime.date = datetime.date(2023, 2, 6)
+    delta: datetime.timedelta = datetime.timedelta(days=7 * (now_week - 1) + now_day - 1)
     return start_date + delta
 
 
-def parse_api(now_day: int, now_week: int) -> str:
-    """Перебор пар по типо дня недели."""
+def parse_api(now_day: int, now_week: int):
+    """Персинг пар по типу дня недели."""
     day: str = str(now_day)
     print(calculate_day_by_week(now_day, now_week))
     try:
@@ -40,4 +42,4 @@ def parse_api(now_day: int, now_week: int) -> str:
 
 
 if __name__ == '__main__':
-    parse_api(1, now_week)
+    parse_api(6, now_week)
