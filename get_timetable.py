@@ -6,7 +6,7 @@
 from requests import get
 import sqlite3
 import datetime
-from readerdata import add_information
+from readerdata import add_information, all_data
 from tokens import groupapi
 from tokens import currentweekapi
 
@@ -45,6 +45,9 @@ def parse_api_to_data(now_day: int, now_week: int):
 
 
 if __name__ == '__main__':
-    for now_week in range(1, 3):
+    for now_week in range(1, 18):
         for now_day in range(1, 7):
             parse_api_to_data(now_day, now_week)
+    all_data()
+
+
