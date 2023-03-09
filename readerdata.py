@@ -1,4 +1,6 @@
 import sqlite3
+from os import system
+
 
 con = sqlite3.connect('schedule_group.sqlite')
 cur = con.cursor()
@@ -14,10 +16,21 @@ def create_table():
     start_time TEXT,
     end_time TEXT,
     date TEXT,
-    rooms TEXT
+    rooms TEXT,
     type_lesson TEXT
     );
     ''')
+
+
+def add_first_information(now_week: int, now_day: int,
+                          lesson: str, start_time: str,
+                          end_time: str, date: str,
+                          rooms: str, type_lesson: str) -> None:
+    add_data = [(0, now_week, now_day, lesson,
+                 start_time, end_time, date, rooms,
+                 type_lesson)]
+    cur.executemany('INSERT INTO schedule_data VALUES(?,?,?,?,?,?,?,?,?);',
+                    add_data)
 
 
 def add_information(now_week: int, now_day: int,
@@ -28,17 +41,17 @@ def add_information(now_week: int, now_day: int,
     SELECT MAX(id)
     FROM schedule_data
     ''')
-    max_id = cur.fetchone()[0]
-    add_data = [(now_week, now_day, lesson,
+    max_id = int(cur.fetchone()[0]) + 1
+    add_data = [(max_id, now_week, now_day, lesson,
                  start_time, end_time, date, rooms,
                  type_lesson)]
-    cur.executemany('INSERT INTO schedule_data VALUES(?,?,?,?,?,?,?,?);',
+    cur.executemany('INSERT INTO schedule_data VALUES(?,?,?,?,?,?,?,?,?);',
                     add_data)
 
 
 def all_data():
     cur.execute('''
-    SELECT id, *
+    SELECT *
     FROM schedule_data
     ''')
     for res in cur:
@@ -47,11 +60,16 @@ def all_data():
 
 def all_tables():
     cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
-    print(cur.fetchall())
+    return cur.fetchall()
 
 
 if __name__ == '__main__':
-    add_information(129291, 1, 'text', 'data', 'text', 'text', 'text', 'text')
-    all_data()
+    try:
+        create_table()
+        add_first_information(1, 1, 'test', 'test', 'test', 'test', 'test', 'test')
+        system('python get_timetable.py')
+    except sqlite3.IntegrityError:
+        print('таблица с расписанием уже существет')
+
 
 con.commit()
