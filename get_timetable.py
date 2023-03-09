@@ -48,6 +48,6 @@ if __name__ == '__main__':
     for now_week in range(1, 18):
         for now_day in range(1, 7):
             parse_api_to_data(now_day, now_week)
-    all_data()
+
 
 
