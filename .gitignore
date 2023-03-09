@@ -1,6 +1,10 @@
+#data
+schedule_group.sqlite
+
 #rtu-diary
 venv
 tokens.py
+.idea
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
