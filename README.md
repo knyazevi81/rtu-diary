@@ -1,5 +1,5 @@
 # rtu-diary
-![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/img.png "аватарка проекта")
+![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/logoRTU.png "аватарка проекта")
 ![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/img.png "Логотип проекта")
 # О проекте
 Учебный телеграмм бот, созданный удобного распределения задач связаных с обучением
