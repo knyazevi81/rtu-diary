@@ -1,5 +1,4 @@
 # rtu-diary
-![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/logoRTU.png "аватарка проекта")
 ![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/img.png "Логотип проекта")
 # О проекте
 Учебный телеграмм бот, созданный удобного распределения задач связаных с обучением
@@ -10,7 +9,8 @@
 # Технологии
 - Python==2.10
 - Aogram==2.25.1
-### Этап создания проекта
-**начальный**
+### Скриншоты
+![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/logoRTU.png "аватарка проекта")
+- логотип проекта
 # Автор
 - Хасан(knyazevi81)
