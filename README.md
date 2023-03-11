@@ -9,7 +9,7 @@
 # Технологии
 - Python==2.10
 - Aogram==2.25.1
-### Скриншоты
+# Скриншоты
 ![Alt text](https://github.com/knyazevi81/rtu-diary/blob/main/logoRTU.png "аватарка проекта")
 - логотип проекта
 # Автор
